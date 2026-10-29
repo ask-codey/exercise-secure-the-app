@@ -1,0 +1,126 @@
+@HostAddress = http://localhost:5179
+
+# 1. Every product: 200, 77 products
+GET {{HostAddress}}/api/products
+
+###
+
+# 2. Only the beverages (category 1): 200, 12 products
+GET {{HostAddress}}/api/products?categoryId=1
+
+###
+
+# 3. One product: 200, Chai
+GET {{HostAddress}}/api/products/1
+
+###
+
+# 4. A product that doesn't exist: 404
+GET {{HostAddress}}/api/products/999
+
+###
+
+# 5. Add a product: 201 (after Practice: Secure the App, 401: see requests 11 to 16), with its new id and a Location header. Use that id in requests 6 to 8.
+POST {{HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "productName": "Trail Mix",
+  "categoryId": 3,
+  "unitPrice": 4.50,
+  "unitsInStock": 20,
+  "discontinued": false
+}
+
+###
+
+# 6. Change it: 204 (put the new id in the address)
+PUT {{HostAddress}}/api/products/78
+Content-Type: application/json
+
+{
+  "productName": "Trail Mix",
+  "categoryId": 3,
+  "unitPrice": 4.95,
+  "unitsInStock": 18,
+  "discontinued": false
+}
+
+###
+
+# 7. Delete it: 204
+DELETE {{HostAddress}}/api/products/78
+
+###
+
+# 8. Delete it again: 404
+DELETE {{HostAddress}}/api/products/78
+
+###
+
+# 9. A product with no name: 400, with the validation errors
+POST {{HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "unitPrice": 4.50
+}
+
+###
+
+# 10. Delete a product that orders still use: 409 Conflict
+DELETE {{HostAddress}}/api/products/1
+
+###
+
+# Practice: Secure the App. Run Users.sql in SSMS, and set the key with user secrets, first.
+
+# 11. Register: 200, with a token, "userName": "ada" and "role": "User" (409 if ada is taken)
+POST {{HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{ "userName": "ada", "password": "summer2026" }
+
+###
+
+# 12. Sign in with the wrong password: 401
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{ "userName": "ada", "password": "summer2025" }
+
+###
+
+# 13. Sign in: 200, with a token
+# @name login
+POST {{HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{ "userName": "ada", "password": "summer2026" }
+
+###
+
+# 14. Who am I: 200, ada, User
+GET {{HostAddress}}/api/auth/me
+Authorization: Bearer {{login.response.body.$.token}}
+
+###
+
+# 15. Add a product with the token: 201. Use its id in request 16.
+POST {{HostAddress}}/api/products
+Authorization: Bearer {{login.response.body.$.token}}
+Content-Type: application/json
+
+{
+  "productName": "Trail Mix",
+  "categoryId": 3,
+  "unitPrice": 4.50,
+  "unitsInStock": 20,
+  "discontinued": false
+}
+
+###
+
+# 16. Delete it as ada: 403. Make ada an admin in SSMS, sign in again (13), and it's 204.
+DELETE {{HostAddress}}/api/products/78
+Authorization: Bearer {{login.response.body.$.token}}

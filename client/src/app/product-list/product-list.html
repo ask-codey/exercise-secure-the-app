@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between align-items-end mb-3">
+  <div style="max-width: 20rem;">
+    <label class="form-label" for="category">Category</label>
+    <select id="category" class="form-select" [ngModel]="categoryId()" (ngModelChange)="chooseCategory($event)">
+      <option value="">All categories</option>
+      @for (category of categories; track category.categoryId) {
+        <option [value]="category.categoryId">{{ category.categoryName }}</option>
+      }
+    </select>
+  </div>
+  <!-- TODO: show this link only while someone is signed in. -->
+  <a id="add-link" class="btn btn-primary" routerLink="/products/new">Add a product</a>
+</div>
+
+@if (message()) {
+  <p id="message" class="text-danger">{{ message() }}</p>
+}
+
+@if (loading()) {
+  <p id="loading">Loading products...</p>
+} @else {
+  <table class="table">
+    <thead>
+      <tr><th>Product</th><th>Price</th><th>In stock</th><th></th></tr>
+    </thead>
+    <tbody>
+      @for (product of products(); track product.productId) {
+        <tr class="product">
+          <td class="name">{{ product.productName }}</td>
+          <td>{{ product.unitPrice | currency }}</td>
+          <td>{{ product.unitsInStock }}</td>
+          <td>
+            <!-- TODO: show the Delete button only to admins. -->
+            <button class="btn btn-sm btn-outline-danger delete" (click)="remove(product)">Delete</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
