@@ -57,3 +57,7 @@ The requirements are in the comment at the top of each file.
 - The lessons *Securing a Web API with JWT Bearer*, *Login and Register in Angular* and *Route Guards and HTTP Interceptors* have everything you need.
 - A test's message says what it expected and what it found. Read it before changing code.
 - `dotnet test` starts your whole API in memory, with a test key: if every API test fails with a 500, look at `Program.cs` first.
+
+## Hand it in
+
+When it works, push your solution to a public repo of your own on GitHub, then paste that repo's address into **Submit your exercise** on the lesson page at [ask-codey.com](https://www.ask-codey.com). That's what completes the lesson. The lesson page shows the Git commands, step by step.
