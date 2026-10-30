@@ -7,9 +7,9 @@ import { Auth } from '../auth';
 import { categories, Product } from '../product';
 import { ProductApi } from '../product-api';
 
-// The products page, from Practice: an Angular Client for a Web API, with the add form moved to its own page.
+// The products page, from Exercise: an Angular Client for a Web API, with the add form moved to its own page.
 //
-// Requirements (Practice: Secure the App), in product-list.html:
+// Requirements (Exercise: Secure the App), in product-list.html:
 // - The "Add a product" link (<a id="add-link">) shows only while someone is signed in.
 // - Each product's Delete button (<button class="delete">) shows only to admins.
 @Component({

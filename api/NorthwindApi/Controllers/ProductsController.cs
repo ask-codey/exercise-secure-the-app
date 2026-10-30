@@ -19,7 +19,7 @@ namespace NorthwindApi.Controllers;
 //   there's no such product.
 // - Every action is async, and uses the IProductDao it's given.
 //
-// Securing it (Practice: Secure the App):
+// Securing it (Exercise: Secure the App):
 // - Anyone may GET the products.
 // - Adding (POST) and changing (PUT) a product need a signed-in user: no token or a bad one answers 401.
 // - Deleting a product needs the role Admin: a signed-in user who isn't an admin gets 403.

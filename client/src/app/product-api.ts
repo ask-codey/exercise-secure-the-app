@@ -3,7 +3,7 @@ import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from './product';
 
-// Calls the products API from Practice: Northwind Web API.
+// Calls the products API from Exercise: Northwind Web API.
 //
 // Requirements:
 // - getAll(categoryId) sends GET /api/products, or GET /api/products?categoryId=2 when a category is given.

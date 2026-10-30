@@ -1,8 +1,8 @@
-# Practice: Secure the App
+# Exercise: Secure the App
 
-Practice code for the lesson **Practice: Secure the App** in the C# Full-Stack Bootcamp on [ask-codey.com](https://www.ask-codey.com).
+Exercise code for the lesson **Exercise: Secure the App** in the C# Full-Stack Bootcamp on [ask-codey.com](https://www.ask-codey.com).
 
-The products API and its Angular client, from *Practice: Northwind Web API* and *Practice: an Angular Client for a Web API*, get users. Anyone can read the products, signed-in users can add and change them, and only admins can delete them.
+The products API and its Angular client, from *Exercise: Northwind Web API* and *Exercise: an Angular Client for a Web API*, get users. Anyone can read the products, signed-in users can add and change them, and only admins can delete them.
 
 ## What's here
 
@@ -21,7 +21,7 @@ Both test suites use fakes, so they need no database, no user secrets and no run
 - `NorthwindApi/Controllers/AuthController.cs`: register, login and "who am I", for you to finish.
 - `NorthwindApi/Program.cs`: turn on JWT bearer authentication here.
 - `NorthwindApi/Controllers/ProductsController.cs`: protect its actions.
-- `NorthwindApi/NorthwindApi.http`: requests to try it by hand; requests 11 to 16 are for this practice.
+- `NorthwindApi/NorthwindApi.http`: requests to try it by hand; requests 11 to 16 are for this exercise.
 
 ### In client/src/app/
 

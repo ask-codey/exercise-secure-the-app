@@ -20,7 +20,7 @@ GET {{HostAddress}}/api/products/999
 
 ###
 
-# 5. Add a product: 201 (after Practice: Secure the App, 401: see requests 11 to 16), with its new id and a Location header. Use that id in requests 6 to 8.
+# 5. Add a product: 201 (after Exercise: Secure the App, 401: see requests 11 to 16), with its new id and a Location header. Use that id in requests 6 to 8.
 POST {{HostAddress}}/api/products
 Content-Type: application/json
 
@@ -73,7 +73,7 @@ DELETE {{HostAddress}}/api/products/1
 
 ###
 
-# Practice: Secure the App. Run Users.sql in SSMS, and set the key with user secrets, first.
+# Exercise: Secure the App. Run Users.sql in SSMS, and set the key with user secrets, first.
 
 # 11. Register: 200, with a token, "userName": "ada" and "role": "User" (409 if ada is taken)
 POST {{HostAddress}}/api/auth/register
